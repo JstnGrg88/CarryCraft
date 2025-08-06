@@ -1,33 +1,986 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CarryCraft</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      background: #111;
-      color: #fff;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
-    .logo {
-      margin-top: 60px;
-      width: 300px;
-      max-width: 80vw;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-top: 32px;
-      letter-spacing: 2px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarryCraft - Your Perfect EDC Loadout</title>
+    <meta name="description" content="Get personalized EDC gear recommendations based on your style, budget, and lifestyle. Find your perfect everyday carry loadout.">
+    <meta property="og:title" content="CarryCraft - Your Perfect EDC Loadout">
+    <meta property="og:description" content="Get personalized EDC gear recommendations based on your style, budget, and lifestyle.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚡%3C/text%3E%3C/svg%3E">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #222 0%, #181818 100%);
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .header {
+            background: rgba(30, 30, 30, 0.97);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .logo-img img {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #FF8454 0%, #e55a2b 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 132, 84, 0.3);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #e55a2b 0%, #d14920 100%);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(255, 132, 84, 0.4);
+        }
+        .btn-secondary {
+            background: rgba(139, 154, 120, 0.2);
+            color: #8B9A78;
+            border: 1px solid rgba(139, 154, 120, 0.4);
+        }
+        .btn-secondary:hover {
+            background: rgba(139, 154, 120, 0.3);
+            color: #A8B89C;
+        }
+        .landing {
+            text-align: center;
+            padding: 5rem 0 3rem 0;
+            color: white;
+            position: relative;
+        }
+        .hero-logo-large {
+            margin: 0 auto 2rem auto;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(20,20,20,0.94);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+        }
+        .hero-logo-large img {
+            width: 120px;
+            height: 120px;
+            display: block;
+        }
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f5f5f5 0%, #FF8454 50%, #8B9A78 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: 1.35rem;
+            margin-bottom: 2.2rem;
+            opacity: 0.93;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .email-signup {
+            background: rgba(40, 40, 40, 0.93);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            margin: 2rem auto;
+            border: 1px solid rgba(255, 132, 84, 0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            color: white;
+        }
+        .email-signup-title { margin-bottom: 1rem; color: white; }
+        .email-form {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .email-input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.97);
+        }
+        .email-disclaimer {
+            font-size: 0.95rem;
+            opacity: 0.89;
+            color: white;
+        }
+        .app-section {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            color: #2a2a2a;
+            letter-spacing: 0.01em;
+        }
+        .onboarding {
+            background: rgba(255,255,255,0.97);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(139, 154, 120, 0.18);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .onboarding-title { margin-bottom: 1.5rem; color: #1f2937; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid rgba(139, 154, 120, 0.3);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            transition: border-color 0.3s;
+        }
+        .form-select:focus {
+            outline: none;
+            border-color: #FF8454;
+            box-shadow: 0 0 0 3px rgba(255,132,84,0.12);
+        }
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .category-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .category-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+        .loadout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .gear-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.09);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        .gear-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px -3px rgba(0,0,0,0.14);
+        }
+        .gear-category {
+            background: linear-gradient(135deg, #8B9A78 0%, #6B7A5A 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .gear-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: #f1f5f9;
+        }
+        .gear-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+        .gear-brand { color: #6b7280; font-weight: 500; margin-bottom: 0.5rem; }
+        .gear-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 1rem;
+        }
+        .gear-description {
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .match-score {
+            background: linear-gradient(135deg, #8B9A78 0%, #A8B89C 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .affiliate-link {
+            background: linear-gradient(135deg, #FF8454 0%, #e55a2b 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255,132,84,0.18);
+        }
+        .affiliate-link:hover {
+            background: linear-gradient(135deg, #e55a2b 0%, #d14920 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,132,84,0.25);
+        }
+        .loadout-actions {
+            text-align: center;
+            margin: 3rem 0;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .hidden { display: none; }
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #6b7280;
+        }
+        .spinner {
+            border: 4px solid rgba(139, 154, 120, 0.3);
+            border-top: 4px solid #FF8454;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.1rem; }
+            .email-form { flex-direction: column; }
+            .nav-buttons { display: none; }
+            .loadout-actions { flex-direction: column; }
+            .hero-logo-large { width: 110px; height: 110px; }
+            .hero-logo-large img { width: 80px; height: 80px; }
+        }
+        .btn:focus, .form-select:focus, .email-input:focus {
+            outline: 2px solid #FF8454;
+            outline-offset: 2px;
+        }
+        .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
+    </style>
 </head>
 <body>
-  <img src="carrycraft-logo.png" alt="CarryCraft Logo" class="logo">
-  <h1>CarryCraft</h1>
-  <p>Your hub for everyday carry essentials.</p>
+    <header class="header" role="banner">
+        <nav class="nav container" aria-label="Main Navigation">
+            <a href="#" class="logo" aria-label="CarryCraft Home">
+                <span class="logo-img" aria-hidden="true">
+                    <img src="carrycraft-logo.png" alt="CarryCraft Logo" />
+                </span>
+                <span style="font-family: 'Montserrat', Arial Black, Arial, sans-serif;">CARRYCRAFT</span>
+            </a>
+            <div class="nav-buttons">
+                <a href="#app" class="btn btn-secondary" id="try-generator-btn">Try Generator</a>
+                <a href="#email-signup" class="btn btn-primary get-early-access">Get Early Access</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+    <section class="landing" aria-labelledby="main-title">
+        <div class="container">
+            <div class="hero-logo-large" aria-hidden="true">
+                <img src="carrycraft-logo.png" alt="CarryCraft Logo" />
+            </div>
+            <h1 class="hero-title" id="main-title">Your Perfect EDC Loadout Awaits</h1>
+            <p class="hero-subtitle">
+                Stop guessing what gear to carry. Get personalized EDC recommendations based on your style, budget, and lifestyle—curated by experts, powered by your preferences.
+            </p>
+            <section class="email-signup" id="email-signup" aria-labelledby="signup-title">
+                <h2 class="email-signup-title" id="signup-title">🚀 Be First to Know</h2>
+                <form class="email-form" name="carrycraft-signup" method="POST" netlify aria-label="Sign up for early access">
+                    <input type="hidden" name="form-name" value="carrycraft-signup" />
+                    <label for="email-input" class="visually-hidden">Email Address</label>
+                    <input 
+                        type="email" 
+                        name="email"
+                        class="email-input" 
+                        placeholder="Enter your email"
+                        required
+                        id="email-input"
+                        aria-required="true"
+                        autocomplete="email"
+                    >
+                    <input type="hidden" name="source" value="landing_page" />
+                    <input type="hidden" name="timestamp" id="signup-timestamp" />
+                    <button type="submit" class="btn btn-primary" id="join-waitlist-btn">Join Waitlist</button>
+                </form>
+                <p class="email-disclaimer">
+                    Get notified when we launch + receive exclusive EDC guides
+                </p>
+            </section>
+            <div style="margin-top: 3rem;">
+                <a href="#app" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                    🎯 Try the Generator Now
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="app-section" id="app" aria-labelledby="generator-title">
+        <div class="container">
+            <h2 class="section-title" id="generator-title">Build Your Perfect EDC Loadout</h2>
+            <form class="onboarding" id="onboarding" autocomplete="off" aria-labelledby="onboarding-title">
+                <h3 class="onboarding-title" id="onboarding-title">Tell us about yourself:</h3>
+                <div class="form-group">
+                    <label class="form-label" for="style-select">What's your style?</label>
+                    <select class="form-select" id="style-select" aria-required="true" required>
+                        <option value="">Choose your style...</option>
+                        <option value="minimalist">Minimalist - Clean, simple, essential only</option>
+                        <option value="tactical">Tactical - Ready for anything, function-first</option>
+                        <option value="professional">Professional - Office-appropriate, refined</option>
+                        <option value="rugged">Rugged - Outdoor-ready, durable</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="budget-select">What's your budget range?</label>
+                    <select class="form-select" id="budget-select" aria-required="true" required>
+                        <option value="">Choose budget...</option>
+                        <option value="budget">Budget ($20-50 per item)</option>
+                        <option value="mid-range">Mid-Range ($50-150 per item)</option>
+                        <option value="premium">Premium ($150-300 per item)</option>
+                        <option value="luxury">Luxury ($300+ per item)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="usecase-select">Primary use case?</label>
+                    <select class="form-select" id="usecase-select" aria-required="true" required>
+                        <option value="">Choose use case...</option>
+                        <option value="work">Work - Office, meetings, daily professional use</option>
+                        <option value="travel">Travel - Airports, hotels, on-the-go</option>
+                        <option value="outdoor">Outdoor - Hiking, camping, adventure</option>
+                        <option value="urban">Urban - City life, commuting, everyday tasks</option>
+                    </select>
+                </div>
+                <fieldset class="form-group" aria-labelledby="category-legend">
+                    <legend class="form-label" id="category-legend">What gear categories do you want?</legend>
+                    <div class="categories-grid">
+                        <div class="category-option">
+                            <input type="checkbox" id="knife" value="knife" checked>
+                            <label for="knife">🔪 Knife</label>
+                        </div>
+                        <div class="category-option">
+                            <input type="checkbox" id="flashlight" value="flashlight" checked>
+                            <label for="flashlight">🔦 Flashlight</label>
+                        </div>
+                        <div class="category-option">
+                            <input type="checkbox" id="multitool" value="multitool" checked>
+                            <label for="multitool">🔧 Multitool</label>
+                        </div>
+                        <div class="category-option">
+                            <input type="checkbox" id="wallet" value="wallet" checked>
+                            <label for="wallet">👛 Wallet</label>
+                        </div>
+                        <div class="category-option">
+                            <input type="checkbox" id="watch" value="watch" checked>
+                            <label for="watch">⌚ Watch</label>
+                        </div>
+                        <div class="category-option">
+                            <input type="checkbox" id="pen" value="pen">
+                            <label for="pen">✒️ Pen</label>
+                        </div>
+                    </div>
+                </fieldset>
+                <button type="button" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1rem 2rem;" id="generate-loadout-btn">
+                    🎯 Generate My Perfect Loadout
+                </button>
+            </form>
+            <div class="loading hidden" id="loading" aria-live="polite">
+                <div class="spinner"></div>
+                <p>Crafting your perfect EDC loadout...</p>
+            </div>
+            <section id="loadout-results" class="hidden" aria-labelledby="results-title">
+                <h3 class="results-title" id="results-title" style="text-align: center; margin-bottom: 2rem; color: #1f2937;">
+                    🎉 Your Personalized EDC Loadout
+                </h3>
+                <div id="selected-preferences" style="text-align:center; margin-bottom:2rem; color:#374151;"></div>
+                <div class="loadout-grid" id="loadout-grid">
+                </div>
+                <div class="loadout-actions">
+                    <button class="btn btn-secondary" id="regenerate-btn">
+                        🔄 Try Different Options
+                    </button>
+                    <button class="btn btn-primary" id="save-loadout-btn">
+                        💾 Save This Loadout
+                    </button>
+                    <button class="btn btn-primary get-early-access" type="button">
+                        📧 Get Notified of New Gear
+                    </button>
+                </div>
+            </section>
+        </div>
+    </section>
+    </main>
+    <script>
+    const gearDatabase = {
+        knife: [
+            {
+                name: "Benchmade Mini Griptilian",
+                brand: "Benchmade",
+                price: 129.99,
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+                description: "Compact, reliable folding knife with AXIS lock mechanism. Perfect for everyday tasks.",
+                styles: ["tactical", "professional", "rugged"],
+                budgetTier: "mid-range",
+                useCases: ["work", "outdoor", "urban"],
+                rating: 4.8,
+                affiliateLink: "https://amazon.com/dp/B0000WYK4G"
+            },
+            {
+                name: "Spyderco Para 3",
+                brand: "Spyderco",
+                price: 149.99,
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+                description: "Iconic compression lock folder with premium steel and ergonomic design.",
+                styles: ["tactical", "rugged"],
+                budgetTier: "mid-range",
+                useCases: ["outdoor", "work", "urban"],
+                rating: 4.9,
+                affiliateLink: "https://amazon.com/dp/B01N1TQCQZ"
+            },
+            {
+                name: "Ontario RAT II",
+                brand: "Ontario",
+                price: 34.99,
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+                description: "Budget-friendly liner lock folder that doesn't compromise on quality.",
+                styles: ["minimalist", "rugged"],
+                budgetTier: "budget",
+                useCases: ["work", "outdoor", "urban"],
+                rating: 4.6,
+                affiliateLink: "https://amazon.com/dp/B00BBPAOCW"
+            },
+            {
+                name: "Chris Reeve Small Sebenza 31",
+                brand: "Chris Reeve Knives",
+                price: 425.00,
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+                description: "Premium titanium frame lock with impeccable fit and finish.",
+                styles: ["professional", "minimalist"],
+                budgetTier: "luxury",
+                useCases: ["work", "professional"],
+                rating: 4.9,
+                affiliateLink: "https://amazon.com/dp/B08XXXX"
+            }
+        ],
+        flashlight: [
+            {
+                name: "Streamlight MicroStream",
+                brand: "Streamlight",
+                price: 23.99,
+                image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop",
+                description: "Compact AAA flashlight with reliable performance and long runtime.",
+                styles: ["minimalist", "professional", "tactical"],
+                budgetTier: "budget",
+                useCases: ["work", "urban", "travel"],
+                rating: 4.7,
+                affiliateLink: "https://amazon.com/dp/B00143JZ08"
+            },
+            {
+                name: "Olight S2R Baton II",
+                brand: "Olight",
+                price: 69.99,
+                image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop",
+                description: "Rechargeable LED flashlight with magnetic charging and multiple brightness levels.",
+                styles: ["tactical", "professional", "rugged"],
+                budgetTier: "mid-range",
+                useCases: ["work", "outdoor", "urban"],
+                rating: 4.8,
+                affiliateLink: "https://amazon.com/dp/B077ZMPXXD"
+            },
+            {
+                name: "SureFire E2D LED Defender",
+                brand: "SureFire",
+                price: 159.99,
+                image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop",
+                description: "Military-grade flashlight with self-defense features and bombproof construction.",
+                styles: ["tactical", "rugged"],
+                budgetTier: "premium",
+                useCases: ["tactical", "outdoor"],
+                rating: 4.9,
+                affiliateLink: "https://amazon.com/dp/B000WE5ZJG"
+            }
+        ],
+        multitool: [
+            {
+                name: "Leatherman Wave Plus",
+                brand: "Leatherman",
+                price: 109.99,
+                image: "https://images.unsplash.com/photo-1572459722104-b53d1ea47015?w=400&h=300&fit=crop",
+                description: "Full-size multitool with 18 tools including needlenose pliers and wire cutters.",
+                styles: ["tactical", "rugged", "professional"],
+                budgetTier: "mid-range",
+                useCases: ["work", "outdoor", "urban"],
+                rating: 4.8,
+                affiliateLink: "https://amazon.com/dp/B005DI0XM4"
+            },
+            {
+                name: "Victorinox Swiss Army Classic",
+                brand: "Victorinox",
+                price: 19.99,
+                image: "https://images.unsplash.com/photo-1572459722104-b53d1ea47015?w=400&h=300&fit=crop",
+                description: "Compact keychain multitool with essential tools in a small package.",
+                styles: ["minimalist", "professional"],
+                budgetTier: "budget",
+                useCases: ["work", "travel", "urban"],
+                rating: 4.6,
+                affiliateLink: "https://amazon.com/dp/B00004YVB2"
+            },
+            {
+                name: "Leatherman Skeletool CX",
+                brand: "Leatherman",
+                price: 79.99,
+                image: "https://images.unsplash.com/photo-1572459722104-b53d1ea47015?w=400&h=300&fit=crop",
+                description: "Lightweight multitool with carbon fiber scales and essential tools.",
+                styles: ["minimalist", "professional", "tactical"],
+                budgetTier: "mid-range",
+                useCases: ["work", "travel", "urban"],
+                rating: 4.7,
+                affiliateLink: "https://amazon.com/dp/B000XU9NXW"
+            }
+        ],
+        wallet: [
+            {
+                name: "Ridge Wallet",
+                brand: "Ridge",
+                price: 85.00,
+                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop",
+                description: "Minimalist RFID-blocking wallet with sleek aluminum construction.",
+                styles: ["minimalist", "professional"],
+                budgetTier: "mid-range",
+                useCases: ["work", "travel", "urban"],
+                rating: 4.5,
+                affiliateLink: "https://amazon.com/dp/B06X9JQZPX"
+            },
+            {
+                name: "Bellroy Note Sleeve",
+                brand: "Bellroy",
+                price: 89.00,
+                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop",
+                description: "Premium leather wallet with thoughtful organization for cards and cash.",
+                styles: ["professional", "minimalist"],
+                budgetTier: "mid-range",
+                useCases: ["work", "professional"],
+                rating: 4.8,
+                affiliateLink: "https://amazon.com/dp/B00KDZC6OE"
+            },
+            {
+                name: "Recycled Firefighter Sergeant",
+                brand: "Recycled Firefighter",
+                price: 49.99,
+                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop",
+                description: "Rugged wallet made from recycled fire hose material.",
+                styles: ["rugged", "tactical"],
+                budgetTier: "budget",
+                useCases: ["outdoor", "work"],
+                rating: 4.6,
+                affiliateLink: "https://amazon.com/dp/B01KQLXXXX"
+            }
+        ],
+        watch: [
+            {
+                name: "Casio G-Shock DW5600E",
+                brand: "Casio",
+                price: 49.99,
+                image: "https://images.unsplash.com/photo-1524805444973-bf390e5c19fe?w=400&h=300&fit=crop",
+                description: "Iconic digital watch with legendary durability and 200m water resistance.",
+                styles: ["tactical", "rugged", "minimalist"],
+                budgetTier: "budget",
+                useCases: ["outdoor", "work", "urban"],
+                rating: 4.7,
+                affiliateLink: "https://amazon.com/dp/B000GAYQKY"
+            },
+            {
+                name: "Seiko 5 Sport",
+                brand: "Seiko",
+                price: 149.99,
+                image: "https://images.unsplash.com/photo-1524805444973-bf390e5c19fe?w=400&h=300&fit=crop",
+                description: "Automatic mechanical watch with day-date display and 100m water resistance.",
+                styles: ["professional", "rugged"],
+                budgetTier: "mid-range",
+                useCases: ["work", "professional"],
+                rating: 4.6,
+                affiliateLink: "https://amazon.com/dp/B077YVBQXX"
+            },
+            {
+                name: "Omega Speedmaster",
+                brand: "Omega",
+                price: 3500.00,
+                image: "https://images.unsplash.com/photo-1524805444973-bf390e5c19fe?w=400&h=300&fit=crop",
+                description: "Professional chronograph watch worn by astronauts to the moon.",
+                styles: ["professional"],
+                budgetTier: "luxury",
+                useCases: ["professional", "work"],
+                rating: 4.9,
+                affiliateLink: "https://amazon.com/dp/B000XXXXX"
+            }
+        ],
+        pen: [
+            {
+                name: "Fisher Space Pen Bullet",
+                brand: "Fisher",
+                price: 25.99,
+                image: "https://images.unsplash.com/photo-1586953284493-0bcc16238776?w=400&h=300&fit=crop",
+                description: "Compact pen that writes in any condition - upside down, underwater, in space.",
+                styles: ["minimalist", "tactical", "professional"],
+                budgetTier: "budget",
+                useCases: ["work", "travel", "outdoor"],
+                rating: 4.5,
+                affiliateLink: "https://amazon.com/dp/B000095K9D"
+            },
+            {
+                name: "Tactile Turn Bolt Action",
+                brand: "Tactile Turn",
+                price: 89.99,
+                image: "https://images.unsplash.com/photo-1586953284493-0bcc16238776?w=400&h=300&fit=crop",
+                description: "Machined titanium pen with satisfying bolt action mechanism.",
+                styles: ["professional", "tactical"],
+                budgetTier: "mid-range",
+                useCases: ["work", "professional"],
+                rating: 4.8,
+                affiliateLink: "https://amazon.com/dp/B07XXXXX"
+            }
+        ]
+    };
+
+    let currentLoadout = null;
+    let userPreferences = {};
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('signup-timestamp').value = new Date().toISOString();
+
+        document.querySelectorAll('.get-early-access').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('email-signup').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                document.getElementById('email-input').focus();
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        const emailForm = document.querySelector('form[name="carrycraft-signup"]');
+        if (emailForm) {
+            emailForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('email-input').value;
+                document.getElementById('join-waitlist-btn').disabled = true;
+                setTimeout(() => {
+                    document.getElementById('email-signup').innerHTML = `
+                        <div style="text-align: center; color: white;">
+                            <h3>🎉 You're on the list!</h3>
+                            <p>We'll notify you when CarryCraft launches + send exclusive EDC guides.</p>
+                            <p style="margin-top: 1rem; opacity: 0.8;">📧 ${email}</p>
+                        </div>
+                    `;
+                }, 1000);
+            });
+        }
+
+        document.getElementById('generate-loadout-btn').addEventListener('click', function() {
+            generateLoadout();
+        });
+        document.getElementById('regenerate-btn').addEventListener('click', function() {
+            regenerateLoadout();
+        });
+        document.getElementById('save-loadout-btn').addEventListener('click', function() {
+            saveLoadout();
+        });
+    });
+
+    function showPreferencesSummary(prefs) {
+        const displayMap = {
+            style: {
+                minimalist: "Minimalist",
+                tactical: "Tactical",
+                professional: "Professional",
+                rugged: "Rugged"
+            },
+            budget: {
+                'budget': "Budget ($20-50 per item)",
+                'mid-range': "Mid-Range ($50-150 per item)",
+                'premium': "Premium ($150-300 per item)",
+                'luxury': "Luxury ($300+ per item)"
+            },
+            useCase: {
+                work: "Work",
+                travel: "Travel",
+                outdoor: "Outdoor",
+                urban: "Urban"
+            }
+        };
+        document.getElementById('selected-preferences').innerHTML =
+            `<span><strong>Style:</strong> ${displayMap.style[prefs.style] || ''} &nbsp;|&nbsp; <strong>Budget:</strong> ${displayMap.budget[prefs.budget] || ''} &nbsp;|&nbsp; <strong>Use Case:</strong> ${displayMap.useCase[prefs.useCase] || ''}</span>`;
+    }
+
+    function generateLoadout() {
+        const style = document.getElementById('style-select').value;
+        const budget = document.getElementById('budget-select').value;
+        const useCase = document.getElementById('usecase-select').value;
+        if (!style || !budget || !useCase) {
+            alert('Please fill in all preferences to get the best recommendations!');
+            return;
+        }
+        const selectedCategories = [];
+        document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => selectedCategories.push(cb.value));
+        if (selectedCategories.length === 0) {
+            alert('Please select at least one gear category!');
+            return;
+        }
+        userPreferences = { style, budget, useCase };
+        document.getElementById('onboarding').classList.add('hidden');
+        document.getElementById('loading').classList.remove('hidden');
+        setTimeout(() => {
+            const loadout = buildLoadout(selectedCategories, userPreferences);
+            displayLoadout(loadout);
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('loadout-results').classList.remove('hidden');
+            document.getElementById('loadout-results').scrollIntoView({ behavior: 'smooth' });
+            showPreferencesSummary(userPreferences);
+        }, 2000);
+    }
+
+    function buildLoadout(categories, prefs) {
+        const loadout = {};
+        categories.forEach(category => {
+            const gearOptions = gearDatabase[category] || [];
+            if (gearOptions.length === 0) return;
+            let bestGear = null;
+            let bestScore = 0;
+            gearOptions.forEach(gear => {
+                const score = scoreGear(gear, prefs);
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestGear = { ...gear, matchScore: score };
+                }
+            });
+            if (bestGear) {
+                loadout[category] = bestGear;
+            }
+        });
+        currentLoadout = loadout;
+        return loadout;
+    }
+
+    function scoreGear(gear, prefs) {
+        let score = gear.rating * 20;
+        if (gear.styles.includes(prefs.style)) score += 25;
+        if (gear.useCases.includes(prefs.useCase)) score += 20;
+        if (gear.budgetTier === prefs.budget) score += 15;
+        else {
+            const budgetOrder = ['budget', 'mid-range', 'premium', 'luxury'];
+            const userBudgetIndex = budgetOrder.indexOf(prefs.budget);
+            const gearBudgetIndex = budgetOrder.indexOf(gear.budgetTier);
+            const distance = Math.abs(userBudgetIndex - gearBudgetIndex);
+            if (distance === 1) score += 8;
+            else if (distance === 2) score += 3;
+        }
+        return Math.min(score, 100);
+    }
+
+    function displayLoadout(loadout) {
+        const grid = document.getElementById('loadout-grid');
+        grid.innerHTML = '';
+        Object.entries(loadout).forEach(([category, gear]) => {
+            const card = createGearCard(category, gear);
+            grid.appendChild(card);
+        });
+        trackLoadoutGenerated(loadout);
+    }
+
+    function createGearCard(category, gear) {
+        const card = document.createElement('div');
+        card.className = 'gear-card';
+        card.innerHTML = `
+            <div class="gear-category">${category}</div>
+            <div class="match-score">${Math.round(gear.matchScore)}% Match</div>
+            <img src="${gear.image}" alt="${gear.name}" class="gear-image" />
+            <div class="gear-name">${gear.name}</div>
+            <div class="gear-brand">${gear.brand}</div>
+            <div class="gear-price">$${gear.price.toFixed(2)}</div>
+            <div class="gear-description">${gear.description}</div>
+            <a href="${gear.affiliateLink}" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="affiliate-link"
+               data-gearname="${gear.name}"
+               data-category="${category}"
+               data-price="${gear.price}">
+                🛒 View on Amazon
+            </a>
+        `;
+        card.querySelector('.affiliate-link').addEventListener('click', function(e) {
+            trackAffiliateClick(
+                this.getAttribute('data-gearname'),
+                this.getAttribute('data-category'),
+                parseFloat(this.getAttribute('data-price'))
+            );
+        });
+        return card;
+    }
+
+    function regenerateLoadout() {
+        if (!currentLoadout) return;
+        document.getElementById('loadout-results').classList.add('hidden');
+        document.getElementById('loading').classList.remove('hidden');
+        const categories = Object.keys(currentLoadout);
+        setTimeout(() => {
+            const newLoadout = buildLoadoutWithVariation(categories, userPreferences);
+            displayLoadout(newLoadout);
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('loadout-results').classList.remove('hidden');
+            showPreferencesSummary(userPreferences);
+        }, 1500);
+    }
+
+    function buildLoadoutWithVariation(categories, prefs) {
+        const loadout = {};
+        categories.forEach(category => {
+            const gearOptions = gearDatabase[category] || [];
+            if (gearOptions.length === 0) return;
+            const currentGear = currentLoadout[category];
+            const availableOptions = gearOptions.filter(g => g.name !== currentGear.name);
+            if (availableOptions.length === 0) {
+                loadout[category] = currentGear;
+                return;
+            }
+            let bestGear = null;
+            let bestScore = 0;
+            availableOptions.forEach(gear => {
+                let score = scoreGear(gear, prefs) + Math.random() * 10;
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestGear = { ...gear, matchScore: Math.min(score, 100) };
+                }
+            });
+            loadout[category] = bestGear || currentGear;
+        });
+        currentLoadout = loadout;
+        return loadout;
+    }
+
+    function saveLoadout() {
+        if (!currentLoadout) return;
+        alert('🎉 Loadout saved! Sign up for early access to save and manage multiple loadouts.');
+        console.log('Loadout saved:', {
+            loadout: currentLoadout,
+            preferences: userPreferences,
+            totalValue: Object.values(currentLoadout).reduce((sum, gear) => sum + gear.price, 0)
+        });
+    }
+
+    function trackLoadoutGenerated(loadout) {
+        const totalValue = Object.values(loadout).reduce((sum, gear) => sum + gear.price, 0);
+        const avgMatchScore = Object.values(loadout).reduce((sum, gear) => sum + gear.matchScore, 0) / Object.keys(loadout).length;
+        console.log('Loadout Generated:', {
+            categories: Object.keys(loadout),
+            totalValue: totalValue,
+            averageMatchScore: avgMatchScore,
+            userPreferences: userPreferences,
+            timestamp: new Date().toISOString()
+        });
+    }
+    
+    function trackAffiliateClick(gearName, category, price) {
+        console.log('Affiliate Click:', {
+            gearName: gearName,
+            category: category,
+            price: price,
+            userPreferences: userPreferences,
+            timestamp: new Date().toISOString()
+        });
+    }
+    </script>
 </body>
 </html>
