@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarryCraft Blog – Budget EDC Essentials &amp; Gear Guide</title>
+  <meta name="description" content="Discover how to build a functional everyday carry kit on a budget. Our guide covers affordable knives, tools, flashlights, and fidget gear with links to our generator and deals page.">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0f0f0f;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+    header, footer {
+      background-color: #1c1c1c;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+      color: #e0e0e0;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #ffa500;
+      text-decoration: none;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h2 {
+      color: #ffa500;
+    }
+    a.cta {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ffa500;
+      color: #0f0f0f;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .disclosure {
+      font-size: 0.8em;
+      color: #aaa;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CarryCraft Blog</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="/under-15-edc">Under‑$15 Gear</a>
+      <a href="#" class="active">Blog</a>
+      <a href="https://carrycraft.app/generator" target="_blank">Generator</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Your Guide to Budget‑Friendly Everyday Carry</h2>
+    <p>Everyday carry (EDC) is all about having the right tools on hand to handle daily tasks, minor emergencies, and unexpected adventures. But building a reliable EDC kit doesn’t have to be expensive. In fact, some of the most useful gear on the market costs less than a fast‑food meal.</p>
+
+    <h3>Why Budget EDC Matters</h3>
+    <p>High‑quality knives, multi‑tools, flashlights, and notebooks are often associated with high price tags. Yet many reputable brands offer affordable options that don’t compromise on functionality or durability. By starting with budget gear, you can experiment, find your personal preferences, and upgrade later without breaking the bank.</p>
+
+    <h3>Essential Categories Under $15</h3>
+    <ul>
+      <li><strong>Pocket Knives &amp; Multi‑Tools:</strong> Compact blades like the Gerber Paraframe Mini provide cutting power for boxes, cord, or camp prep. Multi‑tools add screwdrivers, bottle openers and more in a small footprint.</li>
+      <li><strong>Flashlights:</strong> AAA keychain lights such as the Olight i3E EOS deliver 90 lumens in a waterproof housing. Don’t be left in the dark when a small light can illuminate your path.</li>
+      <li><strong>Fidgets &amp; Worry Stones:</strong> Keeping your hands busy can reduce stress and help focus. Brass worry stones or textured coins provide a tactile anchor.</li>
+      <li><strong>Notebooks &amp; Pens:</strong> The Rite in the Rain pocket notebook has waterproof pages for jotting down ideas in any weather. Pair it with a compact pen for a complete note‑taking kit.</li>
+      <li><strong>Clips &amp; Key Organizers:</strong> Slim clips like the UltiClip 3.3 secure your gear inside pockets or bags. Key organizers tame jangling keys and provide quick access.</li>
+    </ul>
+
+    <h3>How to Build Your Kit</h3>
+    <p>Start by identifying your daily needs. Do you frequently open packages, work in low‑light environments, or travel with minimal gear? Choose one item from each category above to cover cutting, illumination, organization and note‑taking. Keep weight and size in mind so your gear stays pocketable.</p>
+    <p>Remember: you can always upgrade individual pieces as your budget allows. The important thing is to carry tools that make your day smoother and safer.</p>
+
+    <h3>Ready to Level Up?</h3>
+    <p>We’ve hand‑selected a list of high‑value items under $15 and loaded them into our generator. Try it for yourself and see how different combinations feel. Each product card includes a one‑line pitch, key specs, and a link to purchase from trusted retailers.</p>
+    <a href="/under-15-edc" class="cta">Browse Under‑$15 Gear</a>
+    <a href="https://carrycraft.app/generator" class="cta" style="margin-left:10px;">Generate My Loadout</a>
+
+    <p class="disclosure">Disclosure: As an Amazon Associate and member of other affiliate programs, we may earn commissions from qualifying purchases made through our links. This comes at no extra cost to you and helps support the site.</p>
+  </main>
+  <footer>
+    <p>&copy; 2025 CarryCraft. All rights reserved.</p>
+  </footer>
+</body>
+</html>
